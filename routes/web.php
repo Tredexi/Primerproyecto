@@ -8,6 +8,7 @@ use App\Http\Controllers\PostController;
 
 route::get('/hello', HomeController::class);
 route::get('post/mensaje',[PostController::class,'Mensaje']);
+route::get('post/about/{param?}/{name?}',[PostController::class, 'about']);
 
 /*
 Route::get('/', function () {
