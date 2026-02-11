@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Pagina as ModelsPagina;
 use Illuminate\Http\Request;
-//use App\Models\Pagina;
+use App\Models\Pagina;
 use Illuminate\Support\Facades\App;
+use Yajra\Datatables\Datatables;
 
 class HomeController extends Controller
 {
@@ -19,8 +20,8 @@ class HomeController extends Controller
         $datos['descripcion_about']="Empresa dedicada al desarrollo de software a la medida de sus clientes ";
         $datos['texto_ejemplo']="Aqui ca la descripcion del texto de ejemplo";
 
-        //$usuarios=new Pagina();
-       //$datos["listadousuarios"]=$usuarios->ObtenerListado();
+        $usuarios=new Pagina();
+        $datos["listadousuarios"]=$usuarios->ObtenerListado();
         return view ('empresa',$datos);
     }
 }
