@@ -35,4 +35,22 @@ class HomeController extends Controller
         }
         return $respuesta;
     }
+    public function eliminarLogico($id){
+        $usuario = Pagina::find($id);
+        if($usuario){
+            $usuario->is_active = 0; // Cambiamos el estatus a 0
+            $usuario->save();
+            return response()->json(['mensaje' => 'Eliminación lógica exitosa']);
+        }
+        return response()->json(['error' => 'Registro no encontrado'], 404);
+    }
+
+    public function eliminarFisico($id){
+        $usuario = Pagina::find($id);
+        if($usuario){
+            $usuario->delete(); // Elimina el registro por completo de la BD
+            return response()->json(['mensaje' => 'Eliminación física exitosa']);
+        }
+        return response()->json(['error' => 'Registro no encontrado'], 404);
+    }
 }
