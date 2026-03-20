@@ -26,49 +26,49 @@
         </x-alert>
         <div class="row">
             <div class="col-sm-3">
-               <x-card>
+                <x-card>
                     <x-slot name="title">
                         Producto #1
                     </x-slot>
                     <x-slot name="texto_tarjeta">
                         El contenido de la tarjeta va aquí
                     </x-slot>
-               </x-card>
+                </x-card>
             </div>
- 
+
             <div class="col-sm-3">
-               <x-card>
+                <x-card>
                     <x-slot name="title">
-                       Producto #2
+                        Producto #2
                     </x-slot>
                     <x-slot name="texto_tarjeta">
                         El contenido de la tarjeta va aquí
                     </x-slot>
-               </x-card>
+                </x-card>
             </div>
- 
+
             <div class="col-sm-3">
-               <x-card>
+                <x-card>
                     <x-slot name="title">
-                       Producto #3
+                        Producto #3
                     </x-slot>
                     <x-slot name="texto_tarjeta">
                         El contenido de la tarjeta va aquí
                     </x-slot>
-               </x-card>
+                </x-card>
             </div>
- 
+
             <div class="col-sm-3">
-               <x-card>
+                <x-card>
                     <x-slot name="title">
-                       Producto #4
+                        Producto #4
                     </x-slot>
                     <x-slot name="texto_tarjeta">
                         El contenido de la tarjeta va aquí
                     </x-slot>
-               </x-card>
+                </x-card>
             </div>
- 
+
         </div>
     </div>
 </body>

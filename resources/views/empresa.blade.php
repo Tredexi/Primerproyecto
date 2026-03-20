@@ -47,6 +47,7 @@
                         <th>Email</th>
                         <th>Teléfono</th>
                         <th>Calle</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -56,6 +57,7 @@
                             <td>{{$usuario->email}}</td>
                             <td>{{$usuario->telefono}}</td>
                             <td>{{$usuario->calle}}</td>
+                            <td><button class='btn btn-primary' onclick="carga_modal({{$usuario->id}}, '{{$usuario->name}}', '{{$usuario->calle}}')" data-id="{{$usuario->id}}" data-nombre="{{$usuario->name}}" data-calle="{{$usuario->calle}}" data-toggle="modal" data-target="#myModal"><span class='fa fa-pencil'></span></button></td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -65,3 +67,4 @@
         @endif
     </ul>
 @endsection
+@section("texto_modal","Detalle usuario")

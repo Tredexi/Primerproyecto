@@ -85,13 +85,13 @@
       <h2 class="mt-5">TITLE HEADING</h2> 
       <h5>Title description, Sep 2, 2020</h5> 
       <div class="fakeimg"><img src="Imagenes\Imagen03.jpg"
-         class='img-responsive' ></div> 
-         <p>Some text..</p>
+        class='img-responsive' ></div> 
+        <p>Some text..</p>
           <p>Sunt in culpa qui officia deserunt mollit anim id 
             est laborum consectetur adipiscing elit, sed do eiusmod tempor 
             incididunt ut labore et dolore magna aliqua. 
         Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-       </div>
+      </div>
     </div>
   </div>
 
@@ -110,7 +110,31 @@
   <i class="fa-brands fa-telegram"></i>
   <i class="fa-brands fa-youtube"></i>
 </div>
-
+<div class="modal" tabindex="-1" id="myModal" role="dialog">
+  <form id="editForm" method="POST">
+    @csrf @method('PUT')
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">@yield('titulo_modal')</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input type='hidden' name='id' id='id'>
+          <input type='text' name='name' id='name' class="form-control">
+          <input type='text' name='calle' id='calle' class="form-control">
+          <p>Modal body text goes here.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
 </body>
 </html>
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
@@ -124,9 +148,37 @@
                 { data: "name" },
                 { data: "email" },
                 { data: "telefono" },
-                { data: "calle" }
+                { data: "calle" },
+                { data: "acciones"}
             ]
           }
         );
-    });         
+    });
+
+    function carga_modal(id, nombre, calle){
+    $('#id').val(id);
+    $('#name').val(nombre);
+    $("#calle").val(calle);
+    $("#editForm").attr('action','/actualizar-dato/'+id);
+    $('#myModal').modal('show');
+  }
+
+  $("#editForm").on('submit',function(e){
+      e.preventDefault();
+      alert($(this).serialize());
+      $.ajax({
+          url:$(this).attr('action'),
+          type: 'POST',
+          method: 'PUT',
+          data:$(this).serialize(),
+          success: function(response){
+              //console.log(response);
+              $("#myModal").modal('hide');
+              location.reload();
+          },
+          error:function(xhr){
+              console.log(xhr.responseText);
+          }
+      })
+  })
 </script>

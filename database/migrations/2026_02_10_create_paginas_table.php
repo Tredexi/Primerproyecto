@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('avatar')->nullable();
             $table->string('telefono');
             $table->string('calle');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
 
@@ -28,11 +29,9 @@ return new class extends Migration
     /**
      * Reverse the migrations.
      */
-    /*
+    
     public function down(): void
     {
-        Schema::dropIfExists('jobs');
-        Schema::dropIfExists('job_batches');
-        Schema::dropIfExists('failed_jobs');
-    }*/
+        Schema::dropIfExists('paginas');
+    }
 };
