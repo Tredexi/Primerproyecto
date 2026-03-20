@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('telefono');
             $table->string('calle');
             $table->boolean('is_active')->default(true);
+            
             $table->timestamps();
         });
 

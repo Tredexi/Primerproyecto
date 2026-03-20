@@ -96,3 +96,7 @@ route::get('obtenerstatus', function(){
 
     dd($POST->is_active);
 });
+//el siguiente metodo de debe de llamar mediante un metodo de tipo request (por ejemplo, utilizando ajax o postman)
+route::put('/actualizar-dato/{id}',[HomeController::class,'update'])->name('dato.update');
+Route::put('/eliminar-logico/{id}', [HomeController::class, 'eliminarLogico']);
+Route::delete('/eliminar-fisico/{id}', [HomeController::class, 'eliminarFisico']);

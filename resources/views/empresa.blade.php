@@ -57,7 +57,16 @@
                             <td>{{$usuario->email}}</td>
                             <td>{{$usuario->telefono}}</td>
                             <td>{{$usuario->calle}}</td>
-                            <td><button class='btn btn-primary' onclick="carga_modal({{$usuario->id}}, '{{$usuario->name}}', '{{$usuario->calle}}')" data-id="{{$usuario->id}}" data-nombre="{{$usuario->name}}" data-calle="{{$usuario->calle}}" data-toggle="modal" data-target="#myModal"><span class='fa fa-pencil'></span></button></td>
+                            <td><button class='btn btn-primary' onclick="carga_modal({{$usuario->id}}, '{{$usuario->name}}', '{{$usuario->calle}}')" data-id="{{$usuario->id}}" data-nombre="{{$usuario->name}}" data-calle="{{$usuario->calle}}" data-toggle="modal" data-target="#myModal"><span class='fa fa-pencil'></span></button>
+                            
+                                <button class='btn btn-warning' onclick="eliminar_logico({{$usuario->id}})" title="Desactivar usuario">
+                            <span class='fa-solid fa-power-off'></span>
+                            </button>
+                        
+                            <button class='btn btn-danger' onclick="eliminar_fisico({{$usuario->id}})" title="Eliminar definitivamente">
+                                <span class='fa-solid fa-skull-crossbones'></span>
+                            </button>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

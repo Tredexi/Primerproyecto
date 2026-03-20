@@ -134,7 +134,8 @@
       </div>
     </div>
   </form>
-</div>
+</div>>
+
 </body>
 </html>
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
@@ -181,4 +182,46 @@
           }
       })
   })
+
+    function eliminar_logico(id) {
+              if (confirm("¿Estás seguro de que deseas desactivar este registro (eliminación lógica)?")) {
+                  $.ajax({
+                      url: '/eliminar-logico/' + id,
+                      type: 'POST',
+                      data: {
+                          _method: 'PUT', // Le decimos a Laravel que es un PUT
+                          _token: '{{ csrf_token() }}' // Token de seguridad obligatorio de Laravel
+                      },
+                      success: function(response) {
+                          alert(response.mensaje);
+                          location.reload(); // Recarga la página para ver los cambios
+                      },
+                      error: function(xhr) {
+                          console.log(xhr.responseText);
+                          alert("Hubo un error al intentar desactivar el registro.");
+                      }
+                  });
+              }
+          }
+
+    function eliminar_fisico(id) {
+        if (confirm("¡ADVERTENCIA! ¿Estás seguro de eliminar este registro por completo (eliminación física)? Esta acción no se puede deshacer.")) {
+            $.ajax({
+                url: '/eliminar-fisico/' + id,
+                type: 'POST',
+                data: {
+                    _method: 'DELETE', // Le decimos a Laravel que es un DELETE
+                    _token: '{{ csrf_token() }}' // Token de seguridad
+                },
+                success: function(response) {
+                    alert(response.mensaje);
+                    location.reload();
+                },
+                error: function(xhr) {
+                    console.log(xhr.responseText);
+                    alert("Hubo un error al intentar eliminar el registro.");
+                }
+            });
+          }
+        }
 </script>
